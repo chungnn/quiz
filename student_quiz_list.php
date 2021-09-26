@@ -39,7 +39,7 @@
 					$i = 1;
 					if($qry->num_rows > 0){
 						while($row= $qry->fetch_assoc()){
-							$status = $conn->query("SELECT * from history where quiz_id = '".$row['id']."' and user_id ='".$_SESSION['login_id']."' ");
+							$status = $conn->query("SELECT * from history where quiz_id = '".$row['id']."' ");
 							$hist = $status->fetch_array();
 						?>
 					<tr>
