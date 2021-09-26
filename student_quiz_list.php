@@ -35,11 +35,11 @@
 					</thead>
 					<tbody>
 					<?php
-					$qry = $conn->query("SELECT * from  quiz_list where id in  (SELECT quiz_id FROM quiz_student_list ) order by title asc ");
+					$qry = $conn->query("SELECT * from  quiz_list order by title asc ");
 					$i = 1;
 					if($qry->num_rows > 0){
 						while($row= $qry->fetch_assoc()){
-							$status = $conn->query("SELECT * from history where quiz_id = '".$row['id']."' ");
+							$status = $conn->query("SELECT * from history where quiz_id = '".$row['id']."' and user_id ='".$_SESSION['login_id']."' ");
 							$hist = $status->fetch_array();
 						?>
 					<tr>
