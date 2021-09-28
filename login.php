@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,13 +8,13 @@
             header('Location:home.php');
         }
         ?>
-		<title>Login | Simple Online Quiz System</title>
+		<title>ToiLamDev | Online Quiz System</title>
 	</head>
 
 	<body id='login-body' class="bg-light">
 
         <div class="card col-md-6 offset-md-3 text-center bg-primary mb-4">
-            <h3 class="he3-responsive text-white">Simple Online Quiz System</h3>
+            <h3 class="he3-responsive text-white">Online Quiz System</h3>
         </div>
 		<div class="card col-md-4 offset-md-4 mt-4">
                 <div class="card-header-edge text-white">
@@ -62,7 +61,7 @@
                         },
                         success:function(resp){
                             if(resp == 1){
-                                location.replace('home.php')
+                                location.replace('app.php')
                             }else{
                                 alert("Incorrect username or password.")
                                 $('#login-frm button').removeAttr('disable')
