@@ -27,14 +27,14 @@ if(empty($id)){
 	if($question_id){
 		$insert = array();
 		for($i = 0 ; $i < count($question_opt);$i++) {
-			$is_right = isset($is_right[$i]) ? $is_right[$i] : 0;
+			$right = $is_right[$i] ?? 0;
 			$option_text = $question_opt[$i];
 			$qi = "INSERT INTO question_opt set question_id = :question_id";
 			$qi .= ", option_txt = :option_txt, `is_right` = :is_right ";
 			$stmt = Database::getConnection()->prepare($qi);
 			$stmt->bindParam(":question_id", $question_id, PDO::PARAM_INT);
 			$stmt->bindParam(":option_txt", $option_text);
-			$stmt->bindParam(":is_right", $is_right, PDO::PARAM_INT);
+			$stmt->bindParam(":is_right", $right, PDO::PARAM_INT);
 			$stmt->execute();
 			$insert[] = Database::getConnection()->lastInsertId();
 		}
@@ -74,16 +74,17 @@ if(empty($id)){
 
 		$insert = array();
 		for($i = 0 ; $i < count($question_opt);$i++){
-			$is_right = isset($is_right[$i]) ? $is_right[$i] : 0;
+			$right = $is_right[$i] ?? 0;
 			$option_text = $question_opt[$i];
 			$qi = "INSERT INTO question_opt set question_id = :question_id";
 			$qi .= ", option_txt = :option_txt, `is_right` = :is_right ";
 			$stmt = Database::getConnection()->prepare($qi);
 			$stmt->bindParam(":question_id", $id, PDO::PARAM_INT);
 			$stmt->bindParam(":option_txt", $option_text);
-			$stmt->bindParam(":is_right", $is_right, PDO::PARAM_INT);
+			$stmt->bindParam(":is_right", $right, PDO::PARAM_INT);
 			$stmt->execute();
 			$insert[] = Database::getConnection()->lastInsertId();
+			$stmt = null;
 		}
 		if(count($insert) == 4){
 			echo 1;
