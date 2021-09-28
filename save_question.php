@@ -1,11 +1,6 @@
 <?php 
-define('DS', DIRECTORY_SEPARATOR);
-define('APP_DIR', dirname(__FILE__));
-require_once APP_DIR . DS . "vendor" . DS . "autoload.php";
-
-$dotenv = Dotenv\Dotenv::createImmutable(APP_DIR);
-$dotenv->load();
-
+require_once 'constant.php';
+require_once 'env_loader.php';
 require_once APP_DIR . DS . 'libs' . DS . 'Database.php';
 
 extract($_POST);
